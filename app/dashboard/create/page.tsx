@@ -1,6 +1,6 @@
 "use client"
 import { handleSubmission } from "@/app/actions/actions";
-import { Button } from "@/components/ui/button";
+import SubmitButton from "@/components/general/SubmitButton";
 import {
   Card,
   CardContent,
@@ -37,7 +37,7 @@ const CreateBlogRoute = () => {
             <Label>Image Url</Label>
             <Input type="url" name="imageurl" required placeholder="Enter Your ImageUrl"/>
         </div>
-        <Button>Create Post</Button>
+        <SubmitButton/>
           </form>
         </CardContent>
       </Card>
