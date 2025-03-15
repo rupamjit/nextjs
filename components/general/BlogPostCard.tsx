@@ -25,7 +25,7 @@ const BlogPostCard = ({ data }: Props) => {
             className="object-cover transition-transform duration-300 group group-hover:scale-105"
             src={data.imageUrl}
             alt="Image"
-            fill
+            
           />
         </div>
         <div className="p-4">

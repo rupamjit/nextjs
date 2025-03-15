@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
          hostname:"i.insider.com",
         protocol:"https",
         port:""
+      },
+      {
+         hostname:"images.pexels.com",
+        protocol:"https",
+        port:""
       }
     ]
   }
