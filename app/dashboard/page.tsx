@@ -21,7 +21,7 @@ const DashBoardRoute = async () => {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  const data = await fetchAllPosts(user.id);
+  const data = await fetchAllPosts(user?.id);
 
   return (
     <div>
