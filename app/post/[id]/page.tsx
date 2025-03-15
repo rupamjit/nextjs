@@ -33,37 +33,36 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
       <div className="mb-8 mt-6">
         <h1 className="text-3xl font-bold tracking-tight mb-4">{data.title}</h1>
         <div className="flex items-center space-x-4">
-        <div className="flex items-center space-x-2">
-          <div className="relative size-6 overflow-hidden rounded-full">
-            <Image
-              src={data.authorImage}
-              alt={data.authorName}
-              fill
-              className="object-cover"
-            />
+          <div className="flex items-center space-x-2">
+            <div className="relative size-6 overflow-hidden rounded-full">
+              <Image
+                src={data.authorImage}
+                alt={data.authorName}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <p className="font-medium">{data.authorName}</p>
           </div>
-          <p className="font-medium">{data.authorName}</p>
+          <p className="text-sm text-gray-500">
+            {new Intl.DateTimeFormat("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            }).format(data.createdAt)}
+          </p>
         </div>
-        <p className="text-sm text-gray-500">
-          {new Intl.DateTimeFormat("en-US", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          }).format(data.createdAt)}
-        </p>
-      </div>
       </div>
 
-<div className="relative h-[400px] w-full mb-8 overflow-hidden rounded-lg">
-    <img src={data.imageUrl} alt={data.title}  className="object-cover" />
-</div>
+      <div className="relative h-[400px] w-full mb-8 overflow-hidden rounded-lg">
+        <img src={data.imageUrl} alt={data.title} className="object-cover" />
+      </div>
 
-<Card>
-    <CardContent>
-        <p>{data.content}</p>
-    </CardContent>
-</Card>
-
+      <Card>
+        <CardContent>
+          <p>{data.content}</p>
+        </CardContent>
+      </Card>
     </div>
   );
 };
