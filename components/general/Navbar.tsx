@@ -1,8 +1,19 @@
 import Link from "next/link";
 import React from "react";
-import { Button } from "../ui/button";
+import { buttonVariants } from "../ui/button";
+import {
+  RegisterLink,
+  LoginLink,
+  LogoutLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
-const Navbar = () => {
+const Navbar = async () => {
+  const { getUser } = getKindeServerSession();
+
+  const user = await getUser();
+  console.log(user);
+
   return (
     <nav className="flex py-5 items-center justify-between ">
       <div className="flex items-center gap-6">
@@ -28,14 +39,19 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
-        <Button className="cursor-pointer" variant={"default"}>
-          Login
-        </Button>
-        <Button className="cursor-pointer" variant={"outline"}>
-          Sign Up
-        </Button>
-      </div>
+      {user ? (
+        <div className="flex items-center gap-4">
+          <p>{user.given_name}</p>
+          <LogoutLink className={buttonVariants()}>LogOut</LogoutLink>
+        </div>
+      ) : (
+        <div className="flex items-center gap-4">
+          <LoginLink className={buttonVariants()}>Login</LoginLink>
+          <RegisterLink className={buttonVariants({ variant: "outline" })}>
+            Sign Up
+          </RegisterLink>
+        </div>
+      )}
     </nav>
   );
 };
